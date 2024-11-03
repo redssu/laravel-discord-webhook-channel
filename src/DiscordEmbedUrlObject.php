@@ -16,28 +16,28 @@ class DiscordEmbedUrlObject implements Arrayable
      * 
      * @var string|null
      */
-    protected string|null $url;
+    protected string|null $url = null;
 
     /**
      * The proxy URL of the embed url object.
      * 
      * @var string|null
      */
-    protected string|null $proxyUrl;
+    protected string|null $proxyUrl = null;
 
     /**
      * The height of the embed url object.
      * 
      * @var int|null
      */
-    protected int|null $height;
+    protected int|null $height = null;
 
     /**
      * The width of the embed url object.
      * 
      * @var int|null
      */
-    protected int|null $width;
+    protected int|null $width = null;
 
     /**
      * Create a new Discord embed url object instance.

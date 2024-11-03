@@ -13,21 +13,21 @@ class DiscordEmbedFooter implements Arrayable
      *
      * @var string|null
      */
-    protected string|null $text;
+    protected string|null $text = null;
 
     /**
      * The icon URL of the embed footer.
      * 
      * @var string|null
      */
-    protected string|null $iconUrl;
+    protected string|null $iconUrl = null;
 
     /**
      * The proxy icon URL of the embed footer.
      * 
      * @var string|null
      */
-    protected string|null $proxyIconUrl;
+    protected string|null $proxyIconUrl = null;
 
     /**
      * Create a new Discord embed footer instance.

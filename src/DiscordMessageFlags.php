@@ -1,9 +1,9 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace SnoerenDevelopment\DiscordWebhook;
 
-final abstract class DiscordMessageFlags
+abstract class DiscordMessageFlags
 {
     // Only these bitflags can be set when sending a message through a webhook.
     // @see https://discord.com/developers/docs/resources/webhook#execute-webhook-jsonform-params

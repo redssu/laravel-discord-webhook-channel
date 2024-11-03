@@ -13,14 +13,14 @@ class DiscordEmbedProvider implements Arrayable
      * 
      * @var string|null
      */
-    protected string|null $name;
+    protected string|null $name = null;
 
     /**
      * The URL of the embed provider.
      * 
      * @var string|null
      */
-    protected string|null $url;
+    protected string|null $url = null;
 
     /**
      * Create a new Discord embed provider instance.

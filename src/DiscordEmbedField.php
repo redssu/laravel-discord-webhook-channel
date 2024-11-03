@@ -13,21 +13,21 @@ class DiscordEmbedField implements Arrayable
      *
      * @var string|null
      */
-    protected string|null $name;
+    protected string|null $name = null;
 
     /**
      * The value of the embed field.
      * 
      * @var string|null
      */
-    protected string|null $value;
+    protected string|null $value = null;
 
     /**
      * Indicates whether the field should be displayed inline.
      * 
      * @var boolean|null
      */
-    protected bool|null $inline;
+    protected bool|null $inline = null;
 
     /**
      * Create a new Discord embed field instance.
