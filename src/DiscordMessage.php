@@ -45,6 +45,14 @@ class DiscordMessage implements Arrayable
     protected array $allowedMentions = null;
 
     /**
+     * Message flags.
+     * 
+     * @see \SnoerenDevelopment\DiscordWebhook\DiscordMessageFlags
+     * @var int|null
+     */
+    protected int|null $flags = null;
+
+    /**
      * Create a new Discord message instance.
      *
      * @return \SnoerenDevelopment\DiscordWebhook\DiscordMessage
@@ -121,6 +129,19 @@ class DiscordMessage implements Arrayable
     }
 
     /**
+     * Set the message flags.
+     * 
+     * @see \SnoerenDevelopment\DiscordWebhook\DiscordMessageFlags
+     * @param  int $flags The message flags.
+     * @return \SnoerenDevelopment\DiscordWebhook\DiscordMessage
+     */
+    public function flags(int $flags): self
+    {
+        $this->flags = $flags;
+        return $this;
+    }
+
+    /**
      * Get the instance as an array.
      *
      * @return mixed[]
@@ -133,6 +154,7 @@ class DiscordMessage implements Arrayable
             'avatar_url' => $this->avatarUrl,
             'tts' => $this->tts,
             'allowed_mentions' => $this->allowedMentions,
+            'flags' => $this->flags,
         ], function ($value) {
             return !is_null($value);
         });
