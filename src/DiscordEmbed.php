@@ -91,7 +91,7 @@ class DiscordEmbed implements Arrayable
      * 
      * @var \SnoerenDevelopment\DiscordWebhook\DiscordEmbedField[]|null
      */
-    protected array $fields = null;
+    protected array|null $fields = null;
 
     /**
      * Create a new Discord embed instance.

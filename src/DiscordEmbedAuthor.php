@@ -13,28 +13,28 @@ class DiscordEmbedAuthor implements Arrayable
      *
      * @var string|null
      */
-    protected string|null $name;
+    protected string|null $name = null;
 
     /**
      * The url of the embed author.
      * 
      * @var string|null
      */
-    protected string|null $url;
+    protected string|null $url = null;
 
     /**
      * The icon URL of the embed author.
      * 
      * @var string|null
      */
-    protected string|null $iconUrl;
+    protected string|null $iconUrl = null;
 
     /**
      * The proxy icon URL of the embed author.
      * 
      * @var string|null
      */
-    protected string|null $proxyIconUrl;
+    protected string|null $proxyIconUrl = null;
 
     /**
      * Create a new Discord embed author instance.
