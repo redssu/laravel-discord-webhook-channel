@@ -36,6 +36,23 @@ class DiscordMessage implements Arrayable
     protected bool|null $tts = null;
 
     /**
+     * Controls what mentions are allowed in the message.
+     * 
+     * Allowed values: "everyone", "roles", "users"
+     * 
+     * @var array<string>|null
+     */
+    protected array $allowedMentions = null;
+
+    /**
+     * Message flags.
+     * 
+     * @see \SnoerenDevelopment\DiscordWebhook\DiscordMessageFlags
+     * @var int|null
+     */
+    protected int|null $flags = null;
+
+    /**
      * Create a new Discord message instance.
      *
      * @return \SnoerenDevelopment\DiscordWebhook\DiscordMessage
@@ -100,6 +117,31 @@ class DiscordMessage implements Arrayable
     }
 
     /**
+     * Set the allowed mentions.
+     *
+     * @param  array<string> $allowedMentions The allowed mentions. Allowed values: "everyone", "roles", "users"
+     * @return \SnoerenDevelopment\DiscordWebhook\DiscordMessage
+     */
+    public function allowedMentions(array $allowedMentions): self
+    {
+        $this->allowedMentions = $allowedMentions;
+        return $this;
+    }
+
+    /**
+     * Set the message flags.
+     * 
+     * @see \SnoerenDevelopment\DiscordWebhook\DiscordMessageFlags
+     * @param  int $flags The message flags.
+     * @return \SnoerenDevelopment\DiscordWebhook\DiscordMessage
+     */
+    public function flags(int $flags): self
+    {
+        $this->flags = $flags;
+        return $this;
+    }
+
+    /**
      * Get the instance as an array.
      *
      * @return mixed[]
@@ -111,6 +153,8 @@ class DiscordMessage implements Arrayable
             'username' => $this->username,
             'avatar_url' => $this->avatarUrl,
             'tts' => $this->tts,
+            'allowed_mentions' => $this->allowedMentions,
+            'flags' => $this->flags,
         ], function ($value) {
             return !is_null($value);
         });
