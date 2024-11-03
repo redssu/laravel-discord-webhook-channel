@@ -53,6 +53,13 @@ class DiscordMessage implements Arrayable
     protected int|null $flags = null;
 
     /**
+     * The embeds of the message.
+     * 
+     * @var \SnoerenDevelopment\DiscordWebhook\DiscordEmbed[]|null
+     */
+    protected array|null $embeds = null;
+
+    /**
      * Create a new Discord message instance.
      *
      * @return \SnoerenDevelopment\DiscordWebhook\DiscordMessage
@@ -142,6 +149,30 @@ class DiscordMessage implements Arrayable
     }
 
     /**
+     * Add the message embeds.
+     *
+     * @param  \SnoerenDevelopment\DiscordWebhook\DiscordEmbed[] $embeds Embeds to add.
+     * @return \SnoerenDevelopment\DiscordWebhook\DiscordMessage
+     */
+    public function embeds(array $embeds): self
+    {
+        $this->embeds = [...($this->embeds ?? []), ...$embeds];
+        return $this;
+    }
+
+    /**
+     * Add the message embed.
+     *
+     * @param  \SnoerenDevelopment\DiscordWebhook\DiscordEmbed $embed The embed to add.
+     * @return \SnoerenDevelopment\DiscordWebhook\DiscordMessage
+     */
+    public function embed(DiscordEmbed $embed): self
+    {
+        $this->embeds = [...($this->embeds ?? []), $embed];
+        return $this;
+    }
+
+    /**
      * Get the instance as an array.
      *
      * @return mixed[]
@@ -155,6 +186,10 @@ class DiscordMessage implements Arrayable
             'tts' => $this->tts,
             'allowed_mentions' => $this->allowedMentions,
             'flags' => $this->flags,
+            'embeds' => $this->embeds ? array_map(
+                fn(DiscordEmbed $embed) => $embed->toArray(),
+                $this->embeds
+            ) : null,
         ], function ($value) {
             if (is_array($value) && count($value) === 0) {
                 return false;
