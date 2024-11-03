@@ -42,7 +42,7 @@ class DiscordMessage implements Arrayable
      * 
      * @var array<string>|null
      */
-    protected array $allowedMentions = null;
+    protected array|null $allowedMentions = null;
 
     /**
      * Message flags.
