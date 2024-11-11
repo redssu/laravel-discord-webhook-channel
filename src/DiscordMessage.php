@@ -30,6 +30,13 @@ class DiscordMessage implements Arrayable
      */
     protected int|null $flags = null;
 
+    /**
+     * The embeds of the message.
+     * 
+     * @var \SnoerenDevelopment\DiscordWebhook\DiscordEmbed[]
+     */
+    protected array $embeds;
+
     /** Create a new Discord message instance. */
     public static function create(): self
     {
@@ -80,6 +87,28 @@ class DiscordMessage implements Arrayable
     }
 
     /**
+     * Add the message embeds.
+     *
+     * @param  \SnoerenDevelopment\DiscordWebhook\DiscordEmbed[] $embeds Embeds to add.
+     */
+    public function embeds(array $embeds): self
+    {
+        $this->embeds = [...$this->embeds, ...$embeds];
+        return $this;
+    }
+
+    /**
+     * Add the message embed.
+     *
+     * @param  \SnoerenDevelopment\DiscordWebhook\DiscordEmbed $embed The embed to add.
+     */
+    public function embed(DiscordEmbed $embed): self
+    {
+        $this->embeds = [...$this->embeds, $embed];
+        return $this;
+    }
+
+    /**
      * Set the message flags.
      * 
      * @see \SnoerenDevelopment\DiscordWebhook\DiscordMessageFlags
@@ -106,6 +135,10 @@ class DiscordMessage implements Arrayable
             'tts' => $this->tts,
             'allowed_mentions' => $this->allowedMentions?->toArray(),
             'flags' => $this->flags,
+            'embeds' => array_map(
+                fn(DiscordEmbed $embed) => $embed->toArray(),
+                $this->embeds
+            ),
         ], function ($value) {
             if (is_array($value) && count($value) === 0) {
                 return false;
